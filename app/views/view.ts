@@ -7,11 +7,11 @@ export abstract class View<T>{
         this.element = document.querySelector(seletorCSS);
     }
 
-    update(negociacoes: T): void{
+    public update(negociacoes: T): void{
         const template = this.template(negociacoes);
         console.log(template);
         this.element.innerHTML = template;
     }
 
-    abstract template(modelo: T): string;
+    protected abstract template(modelo: T): string;
 }
