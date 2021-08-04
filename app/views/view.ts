@@ -13,7 +13,5 @@ export abstract class View<T>{
         this.element.innerHTML = template;
     }
 
-    template(modelo: T): string{
-        throw Error('Classe filha precisa implementar o método de View');
-    }
+    abstract template(modelo: T): string;
 }
