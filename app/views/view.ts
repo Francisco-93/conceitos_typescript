@@ -3,13 +3,17 @@ import { Negociacoes } from "../models/negociacoes.js";
 export abstract class View<T>{
 
     protected element: HTMLElement;
-    constructor(seletorCSS: string){
+    private escapar = false;
+
+    constructor(seletorCSS: string, escapar?: boolean){
         this.element = document.querySelector(seletorCSS);
     }
 
     public update(negociacoes: T): void{
-        const template = this.template(negociacoes);
-        console.log(template);
+        let template = this.template(negociacoes);
+        if(this.escapar){
+            template = template.replace(/<script>[\s\S]*?<\/script>/, '');
+        }
         this.element.innerHTML = template;
     }
 
