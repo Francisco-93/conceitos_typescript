@@ -5,6 +5,7 @@ export abstract class View<T>{
     protected element: HTMLElement;
     private escapar = false;
 
+    //Parâmetros opcionais SEMPRE devem vir por último
     constructor(seletorCSS: string, escapar?: boolean){
         this.element = document.querySelector(seletorCSS);
     }
